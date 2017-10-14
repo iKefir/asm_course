@@ -224,6 +224,7 @@ struct trampoline<R (Args...)> {
     trampoline& operator=(const trampoline& other) = delete;
 
     trampoline& operator=(trampoline&& other) {
+        deleter(func_obj);
         func_obj = other.func_obj;
         code = other.code;
         deleter = other.deleter;
